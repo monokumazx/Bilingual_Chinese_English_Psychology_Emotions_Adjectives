@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理学与情感词汇 · Psychology &amp; Emotion Glossary</title>
+<style>
+:root {
+  --bg:#f7f5ef; --card-bg:#fff; --text:#343434; --text-light:#6d6d6d;
+  --accent:#5b6e8a; --accent-light:#e7ebf0; --border:#ded9cc;
+  --pinyin:#888; --decon-bg:#fafaf7; --decon-border:#e7e2d7;
+  --heading:#292929; --badge:#8a5b6e; --badge-bg:#fdf3f7;
+  --chip:#e8edf2; --chip-text:#4a6a82; --example-bg:#f7f4f0; --example-border:#e8e0d4;
+  --shadow:0 3px 14px rgba(50,50,50,.045);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:1.25rem 1rem 3rem;max-width:980px;margin:0 auto}
+.header{text-align:center;margin-bottom:1rem;padding:1.8rem 1rem;background:var(--card-bg);border-radius:14px;border:1px solid var(--border)}
+.header .icon-row{font-size:2.3rem;margin-bottom:.45rem;letter-spacing:.12em}
+.header h1{font-size:1.8rem;font-weight:700;color:var(--heading);margin-bottom:.25rem}
+.header .subtitle{font-size:1rem;color:var(--text-light);font-style:italic}
+.header .description{margin-top:.65rem;font-size:.9rem;color:var(--text-light);max-width:680px;margin-left:auto;margin-right:auto}
+.toolbar{position:sticky;top:0;z-index:20;padding:.65rem 0;background:rgba(247,245,239,.94);backdrop-filter:blur(8px)}
+.search-row{display:flex;gap:.55rem;align-items:center;margin-bottom:.55rem}
+.search-box{flex:1;border:1px solid var(--border);background:#fff;border-radius:10px;padding:.62rem .8rem;font:inherit;color:var(--text);outline:none}
+.search-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.clear-btn{border:1px solid var(--border);background:#fff;border-radius:10px;padding:.58rem .75rem;cursor:pointer;color:var(--text-light)}
+.nav-chips{display:flex;flex-wrap:wrap;gap:.38rem;justify-content:center}
+.nav-chip{display:inline-block;padding:.32rem .68rem;border-radius:18px;background:var(--chip);color:var(--chip-text);font-size:.78rem;text-decoration:none;font-weight:600;cursor:pointer;border:1px solid transparent;transition:.18s}
+.nav-chip:hover,.nav-chip.active{background:#dce5ee;border-color:#c9d5df}
+.stats{text-align:center;color:var(--text-light);font-size:.78rem;margin:.35rem 0 1rem}
+.section{margin-bottom:1rem;scroll-margin-top:105px}
+.section-header{display:flex;align-items:center;gap:.55rem;margin-bottom:.55rem;padding:.65rem .7rem;border-bottom:2px solid var(--accent-light);background:transparent}
+.section-header .emoji{font-size:1.45rem;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#f5f3ed;border-radius:10px;flex-shrink:0}
+.section-header h2{font-size:1.22rem;font-weight:700;color:var(--heading)}
+.section-header small{color:var(--text-light);font-style:italic;font-weight:400}
+.category-group{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.45);margin:.7rem 0;overflow:hidden}
+.category-group summary{list-style:none;cursor:pointer;padding:.7rem .9rem;font-weight:700;color:var(--heading);display:flex;align-items:center;gap:.5rem}
+.category-group summary::-webkit-details-marker{display:none}
+.category-group summary::before{content:"›";font-size:1.3rem;color:var(--accent);transition:transform .15s}
+.category-group[open] summary::before{transform:rotate(90deg)}
+.category-note{font-size:.76rem;color:var(--text-light);font-weight:400;margin-left:auto}
+.group-body{padding:0 .65rem .65rem}
+.word-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem 1.15rem;margin-bottom:.65rem;box-shadow:var(--shadow)}
+.word-card:last-child{margin-bottom:0}
+.word-card.star-word{border-left:4px solid var(--badge);background:#fffdfb}
+.word-card.hidden{display:none}
+.word-main{display:flex;align-items:baseline;flex-wrap:wrap;gap:.28rem .55rem;margin-bottom:.4rem}
+.word-zh{font-size:1.55rem;font-weight:700;color:var(--heading);letter-spacing:.03em}
+.word-pinyin{font-size:.88rem;color:var(--pinyin);font-style:italic}
+.word-en{font-size:.88rem;color:var(--text-light);font-style:italic}
+.star-badge{display:inline-block;background:var(--badge-bg);color:var(--badge);font-size:.68rem;padding:.12rem .45rem;border-radius:10px;font-weight:700}
+.category-badge{display:inline-block;background:#f1f3f5;color:#65707a;font-size:.65rem;padding:.12rem .42rem;border-radius:9px;font-weight:600}
+.meanings{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1rem;margin-bottom:.5rem;font-size:.84rem}
+.meaning-zh{color:var(--text)} .meaning-en{color:var(--text-light);font-style:italic}
+.meaning-label,.decon-label,.example-label{font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.03em;display:block;margin-bottom:.1rem}
+.meaning-label{color:var(--accent)} .decon-label{color:#8b7355}.example-label{color:#6b5b3a}
+.deconstruction{background:var(--decon-bg);border:1px solid var(--decon-border);border-radius:7px;padding:.58rem .85rem;font-size:.82rem;line-height:1.55;margin-bottom:.5rem}
+.char-break{display:inline-block;background:#fff;border:1px solid #ddd;border-radius:4px;padding:.08rem .35rem;margin:0 .12rem;font-weight:600;font-size:.9rem}
+.plus{color:#999}.equals{color:#666;font-weight:700}.result{font-weight:700;color:var(--heading)}
+.example{background:var(--example-bg);border:1px solid var(--example-border);border-radius:7px;padding:.52rem .85rem;font-size:.82rem;line-height:1.55}
+.ex-zh{color:var(--text)}.ex-en{color:var(--text-light);font-style:italic;display:block;margin-top:.12rem}
+.no-results{display:none;text-align:center;padding:2rem;color:var(--text-light)}
+.footer{text-align:center;margin-top:2rem;padding:1.2rem;color:var(--text-light);font-size:.78rem;border-top:1px solid var(--border)}
+.back-top{position:fixed;right:18px;bottom:18px;display:none;border:1px solid var(--border);background:#fff;color:var(--text);border-radius:50%;width:42px;height:42px;cursor:pointer;box-shadow:var(--shadow)}
+.back-top.show{display:block}
+@media(max-width:600px){body{padding:.65rem .5rem 2.5rem}.header{padding:1.2rem .75rem}.header h1{font-size:1.4rem}.word-zh{font-size:1.3rem}.word-card{padding:.8rem}.meanings{grid-template-columns:1fr}.category-note{display:none}.nav-chips{justify-content:flex-start}.nav-chip{font-size:.74rem}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="icon-row">🧠💭❤️😊😢😌🧩🌟</div>
+  <h1>心理学与情感词汇</h1>
+  <p class="subtitle"><em>Psychology &amp; Emotion Glossary</em></p>
+  <p class="description">A bilingual glossary for describing emotions, inner states, personality, relationships, cognition, and psychological phenomena. Each entry includes pinyin, Chinese and English meanings, word deconstruction, and an example sentence.</p>
+</header>
+
+<div class="toolbar">
+  <div class="search-row">
+    <input id="searchBox" class="search-box" type="search" placeholder="搜索中文、拼音、英文或释义…  Search the glossary…" aria-label="Search glossary">
+    <button id="clearBtn" class="clear-btn" type="button">清除</button>
+  </div>
+  <nav class="nav-chips" aria-label="Glossary categories">
+    <a href="#sec-foundations" class="nav-chip">🧠 心理基础 Foundations</a>
+    <a href="#sec-cognition" class="nav-chip">🔎 认知过程 Cognition</a>
+    <a href="#sec-emotions" class="nav-chip">💭 情绪 Emotions</a>
+    <a href="#sec-self" class="nav-chip">🌟 自我与性格 Self</a>
+    <a href="#sec-relationships" class="nav-chip">❤️ 人际关系 Relationships</a>
+  </nav>
+</div>
+<div class="stats"><span id="countText">61 个词条</span> · 可搜索 · 可折叠分类 · 中英双语</div>
+
+<main>
+
+<div class="section" id="sec-foundations">
+  <div class="section-header"><span class="emoji">🧠</span><h2>心理基础 <small>Foundations</small></h2></div>
+  <details class="category-group" open><summary>核心心理学词汇 <span class="category-note">Core Psychology</span></summary><div class="group-body">
+    <div class="word-card star-word" data-category="core" data-term="心理学 xīnlǐ xué psychology 中文释义 研究人类心理现象、精神功能和行为的科学。 english meaning the scientific study of the human mind, mental functions, and behavior.">
+      <div class="word-main">
+        <span class="word-zh">心理学</span>
+        <span class="star-badge">⭐ START</span>
+        <span class="word-pinyin">xīnlǐ xué</span>
+        <span class="word-en"><em>psychology</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>研究人类心理现象、精神功能和行为的科学。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The scientific study of the human mind, mental functions, and behavior.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">心</span> <span class="plus">+</span> <span class="char-break">理</span> <span class="plus">+</span> <span class="char-break">学</span> <span class="equals">=</span> <span class="result">心理学</span><br/>
+        心 (xīn) = heart; mind  |  理 (lǐ) = principle; logic; to manage  |  学 (xué) = study; science<br/>
+        → <em>The study of the mind's principles.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她对<strong>心理学</strong>非常感兴趣。</span>
+        <span class="ex-en"><em>She is very interested in psychology.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="core" data-term="心理状态 xīnlǐ zhuàngtài mental state 中文释义 一个人在某段时间内心理活动的情况和特征。 english meaning the condition and characteristics of a person's mental activity during a period of time.">
+      <div class="word-main">
+        <span class="word-zh">心理状态</span>
+        <span class="word-pinyin">xīnlǐ zhuàngtài</span>
+        <span class="word-en"><em>mental state</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>一个人在某段时间内心理活动的情况和特征。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The condition and characteristics of a person's mental activity during a period of time.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">心理</span> <span class="plus">+</span> <span class="char-break">状态</span> <span class="equals">=</span> <span class="result">心理状态</span><br/>
+        心理 (xīnlǐ) = psychology; mind  |  状态 (zhuàngtài) = state; condition<br/>
+        → <em>Mental state or condition.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他的<strong>心理状态</strong>最近不太好。</span>
+        <span class="ex-en"><em>His mental state hasn't been great lately.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="core" data-term="意识 yìshí consciousness; awareness 中文释义 人对外界和自身的觉察与认识。 english meaning a person's perception and recognition of the outside world and oneself.">
+      <div class="word-main">
+        <span class="word-zh">意识</span>
+        <span class="word-pinyin">yìshí</span>
+        <span class="word-en"><em>consciousness; awareness</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>人对外界和自身的觉察与认识。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A person's perception and recognition of the outside world and oneself.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">意</span> <span class="plus">+</span> <span class="char-break">识</span> <span class="equals">=</span> <span class="result">意识</span><br/>
+        意 (yì) = meaning; intention; awareness  |  识 (shí) = to know; to recognize<br/>
+        → <em>Awareness and recognition.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他失去了<strong>意识</strong>。</span>
+        <span class="ex-en"><em>He lost consciousness.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="core" data-term="无意识 wúyìshí unconscious; subconscious 中文释义 不被自己察觉的心理活动。 english meaning mental activity that one is not aware of.">
+      <div class="word-main">
+        <span class="word-zh">无意识</span>
+        <span class="word-pinyin">wúyìshí</span>
+        <span class="word-en"><em>unconscious; subconscious</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>不被自己察觉的心理活动。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Mental activity that one is not aware of.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">无</span> <span class="plus">+</span> <span class="char-break">意识</span> <span class="equals">=</span> <span class="result">无意识</span><br/>
+        无 (wú) = without; no  |  意识 (yìshí) = consciousness<br/>
+        → <em>Without consciousness.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">这个动作是<strong>无意识</strong>的。</span>
+        <span class="ex-en"><em>This action was unconscious.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="core" data-term="潜意识 qiányìshí subconscious mind 中文释义 心理活动中潜伏的、不易被察觉但影响行为的部分。 english meaning the part of mental activity that is hidden, not easily perceived, but influences behavior.">
+      <div class="word-main">
+        <span class="word-zh">潜意识</span>
+        <span class="word-pinyin">qiányìshí</span>
+        <span class="word-en"><em>subconscious mind</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>心理活动中潜伏的、不易被察觉但影响行为的部分。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The part of mental activity that is hidden, not easily perceived, but influences behavior.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">潜</span> <span class="plus">+</span> <span class="char-break">意识</span> <span class="equals">=</span> <span class="result">潜意识</span><br/>
+        潜 (qián) = hidden; latent; to dive  |  意识 (yìshí) = consciousness<br/>
+        → <em>Hidden consciousness.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">我们的许多决定是由<strong>潜意识</strong>驱动的。</span>
+        <span class="ex-en"><em>Many of our decisions are driven by the subconscious mind.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="core" data-term="心理素质 xīnlǐ sùzhì psychological quality; mental resilience 中文释义 一个人心理活动和承受能力的综合表现，例如抗压能力、情绪稳定性等。 english meaning a person's overall psychological makeup and capacity to cope, e.g., stress tolerance, emotional stability.">
+      <div class="word-main">
+        <span class="word-zh">心理素质</span>
+        <span class="word-pinyin">xīnlǐ sùzhì</span>
+        <span class="word-en"><em>psychological quality; mental resilience</em></span>
+        <span class="category-badge">心理基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>一个人心理活动和承受能力的综合表现，例如抗压能力、情绪稳定性等。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A person's overall psychological makeup and capacity to cope, e.g., stress tolerance, emotional stability.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">心理</span> <span class="plus">+</span> <span class="char-break">素质</span> <span class="equals">=</span> <span class="result">心理素质</span><br/>
+        心理 (xīnlǐ) = psychology; mind  |  素质 (sùzhì) = quality; caliber<br/>
+        → <em>The quality of one's mind.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">运动员通常都有很好的<strong>心理素质</strong>。</span>
+        <span class="ex-en"><em>Athletes usually have strong mental resilience.</em></span>
+      </div>
+    </div>
+  </div></details>
+</div>
+
+<div class="section" id="sec-cognition">
+  <div class="section-header"><span class="emoji">🔎</span><h2>认知与心理过程 <small>Cognition &amp; Mental Processes</small></h2></div>
+  <details class="category-group" open><summary>认知、记忆与感知 <span class="category-note">Cognition · Memory · Perception</span></summary><div class="group-body">
+    <div class="word-card" data-category="cognition" data-term="认知 rènzhī cognition 中文释义 人认识外界事物的过程，包括思考、学习、记忆等。 english meaning the process of knowing the world, including thinking, learning, and memory.">
+      <div class="word-main">
+        <span class="word-zh">认知</span>
+        <span class="word-pinyin">rènzhī</span>
+        <span class="word-en"><em>cognition</em></span>
+        <span class="category-badge">认知与心理过程</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>人认识外界事物的过程，包括思考、学习、记忆等。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The process of knowing the world, including thinking, learning, and memory.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">认</span> <span class="plus">+</span> <span class="char-break">知</span> <span class="equals">=</span> <span class="result">认知</span><br/>
+        认 (rèn) = to recognize; to know  |  知 (zhī) = to know; knowledge<br/>
+        → <em>Recognizing and knowing.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">孩子的<strong>认知</strong>能力在不断发展。</span>
+        <span class="ex-en"><em>A child's cognitive ability is constantly developing.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="cognition" data-term="记忆 jìyì memory 中文释义 大脑储存和回想过去经验的能力。 english meaning the brain's ability to store and recall past experiences.">
+      <div class="word-main">
+        <span class="word-zh">记忆</span>
+        <span class="word-pinyin">jìyì</span>
+        <span class="word-en"><em>memory</em></span>
+        <span class="category-badge">认知与心理过程</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>大脑储存和回想过去经验的能力。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The brain's ability to store and recall past experiences.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">记</span> <span class="plus">+</span> <span class="char-break">忆</span> <span class="equals">=</span> <span class="result">记忆</span><br/>
+        记 (jì) = to remember; to record  |  忆 (yì) = to recall; to recollect<br/>
+        → <em>Recording and recalling.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">童年的<strong>记忆</strong>很美好。</span>
+        <span class="ex-en"><em>Childhood memories are very beautiful.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="cognition" data-term="感知 gǎnzhī perception 中文释义 通过感官认识外界事物的过程。 english meaning the process of understanding the world through the senses.">
+      <div class="word-main">
+        <span class="word-zh">感知</span>
+        <span class="word-pinyin">gǎnzhī</span>
+        <span class="word-en"><em>perception</em></span>
+        <span class="category-badge">认知与心理过程</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>通过感官认识外界事物的过程。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The process of understanding the world through the senses.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">感</span> <span class="plus">+</span> <span class="char-break">知</span> <span class="equals">=</span> <span class="result">感知</span><br/>
+        感 (gǎn) = to feel; sensation  |  知 (zhī) = to know<br/>
+        → <em>Feeling and knowing.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">婴儿通过感官来<strong>感知</strong>世界。</span>
+        <span class="ex-en"><em>Babies perceive the world through their senses.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="cognition" data-term="直觉 zhíjué intuition 中文释义 不经过逻辑推理，直接理解和判断的能力。 english meaning the ability to understand and judge directly without logical reasoning.">
+      <div class="word-main">
+        <span class="word-zh">直觉</span>
+        <span class="word-pinyin">zhíjué</span>
+        <span class="word-en"><em>intuition</em></span>
+        <span class="category-badge">认知与心理过程</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>不经过逻辑推理，直接理解和判断的能力。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The ability to understand and judge directly without logical reasoning.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">直</span> <span class="plus">+</span> <span class="char-break">觉</span> <span class="equals">=</span> <span class="result">直觉</span><br/>
+        直 (zhí) = straight; direct  |  觉 (jué) = to feel; to sense<br/>
+        → <em>Direct sensing — intuition.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她的<strong>直觉</strong>告诉她事情不太对劲。</span>
+        <span class="ex-en"><em>Her intuition told her something was wrong.</em></span>
+      </div>
+    </div>
+  </div></details>
+</div>
+
+<div class="section" id="sec-emotions">
+  <div class="section-header"><span class="emoji">💭</span><h2>情绪与情感 <small>Emotions &amp; Feelings</small></h2></div>
+  <details class="category-group" open><summary>情绪基础 <span class="category-note">Emotion Basics</span></summary><div class="group-body">
+    <div class="word-card star-word" data-category="emotion-core" data-term="情绪 qíngxù mood; emotion 中文释义 人对事物的态度体验，如喜、怒、哀、乐等。 english meaning a person's experiential attitude toward things, such as joy, anger, sadness, and happiness.">
+      <div class="word-main">
+        <span class="word-zh">情绪</span>
+        <span class="star-badge">⭐ FOCUS</span>
+        <span class="word-pinyin">qíngxù</span>
+        <span class="word-en"><em>mood; emotion</em></span>
+        <span class="category-badge">情绪基础</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>人对事物的态度体验，如喜、怒、哀、乐等。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A person's experiential attitude toward things, such as joy, anger, sadness, and happiness.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">情</span> <span class="plus">+</span> <span class="char-break">绪</span> <span class="equals">=</span> <span class="result">情绪</span><br/>
+        情 (qíng) = emotion; feeling  |  绪 (xù) = thread; state of mind; mood<br/>
+        → <em>The threads of feeling; mood state.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">你要学会控制自己的<strong>情绪</strong>。</span>
+        <span class="ex-en"><em>You need to learn to control your emotions.</em></span>
+      </div>
+    </div>
+  </div></details>
+  <details class="category-group"><summary>积极情绪 <span class="category-note">Positive Emotions</span></summary><div class="group-body">
+    <div class="word-card" data-category="positive" data-term="开心 kāixīn happy; joyful 中文释义 心情愉快，感到高兴。 english meaning feeling cheerful and delighted.">
+      <div class="word-main">
+        <span class="word-zh">开心</span>
+        <span class="word-pinyin">kāixīn</span>
+        <span class="word-en"><em>happy; joyful</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>心情愉快，感到高兴。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling cheerful and delighted.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">开</span> <span class="plus">+</span> <span class="char-break">心</span> <span class="equals">=</span> <span class="result">开心</span><br/>
+        开 (kāi) = open; to bloom  |  心 (xīn) = heart<br/>
+        → <em>Heart blooming open — happy.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">今天玩得真<strong>开心</strong>！</span>
+        <span class="ex-en"><em>I had so much fun today! (Lit. so happy.)</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="快乐 kuàilè happy; cheerful; joyful 中文释义 感到幸福和满足的心情。 english meaning a feeling of happiness and contentment.">
+      <div class="word-main">
+        <span class="word-zh">快乐</span>
+        <span class="word-pinyin">kuàilè</span>
+        <span class="word-en"><em>happy; cheerful; joyful</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>感到幸福和满足的心情。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A feeling of happiness and contentment.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">快</span> <span class="plus">+</span> <span class="char-break">乐</span> <span class="equals">=</span> <span class="result">快乐</span><br/>
+        快 (kuài) = fast; pleased; joyful  |  乐 (lè) = happy; music; pleasure<br/>
+        → <em>Pleasantly joyful.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">祝你生日<strong>快乐</strong>！</span>
+        <span class="ex-en"><em>Happy birthday to you!</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="兴奋 xīngfèn excited; thrilled 中文释义 因为期待或刺激而充满活力和激动的状态。 english meaning a state of energy and agitation due to anticipation or stimulation.">
+      <div class="word-main">
+        <span class="word-zh">兴奋</span>
+        <span class="word-pinyin">xīngfèn</span>
+        <span class="word-en"><em>excited; thrilled</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为期待或刺激而充满活力和激动的状态。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A state of energy and agitation due to anticipation or stimulation.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">兴</span> <span class="plus">+</span> <span class="char-break">奋</span> <span class="equals">=</span> <span class="result">兴奋</span><br/>
+        兴 (xīng) = to rise; to flourish; excitement  |  奋 (fèn) = to exert; to be roused<br/>
+        → <em>Roused and rising with excitement.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">听到这个消息，他很<strong>兴奋</strong>。</span>
+        <span class="ex-en"><em>He was very excited to hear the news.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="满足 mǎnzú content; satisfied 中文释义 感到愿望实现了，已经足够，不再需要更多。 english meaning feeling that one's wishes have been fulfilled; enough, not needing more.">
+      <div class="word-main">
+        <span class="word-zh">满足</span>
+        <span class="word-pinyin">mǎnzú</span>
+        <span class="word-en"><em>content; satisfied</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>感到愿望实现了，已经足够，不再需要更多。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling that one's wishes have been fulfilled; enough, not needing more.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">满</span> <span class="plus">+</span> <span class="char-break">足</span> <span class="equals">=</span> <span class="result">满足</span><br/>
+        满 (mǎn) = full; satisfied  |  足 (zú) = enough; sufficient<br/>
+        → <em>Full and enough — content.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他对现在的生活很<strong>满足</strong>。</span>
+        <span class="ex-en"><em>He is very content with his current life.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="幸福 xìngfú happy; blissful; blessed 中文释义 生活美满，心里感到温暖和满足的持久状态。 english meaning a lasting state of warmth and satisfaction in life.">
+      <div class="word-main">
+        <span class="word-zh">幸福</span>
+        <span class="word-pinyin">xìngfú</span>
+        <span class="word-en"><em>happy; blissful; blessed</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>生活美满，心里感到温暖和满足的持久状态。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A lasting state of warmth and satisfaction in life.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">幸</span> <span class="plus">+</span> <span class="char-break">福</span> <span class="equals">=</span> <span class="result">幸福</span><br/>
+        幸 (xìng) = fortunate; lucky  |  福 (fú) = blessing; happiness; good fortune<br/>
+        → <em>Fortunate and blessed — deep happiness.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">一家人在一起就是<strong>幸福</strong>。</span>
+        <span class="ex-en"><em>Being together as a family is happiness.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="安心 ānxīn feel at ease; relieved; peace of mind 中文释义 心情平静，没有担忧和不安。 english meaning mind is calm; free from worry and unease.">
+      <div class="word-main">
+        <span class="word-zh">安心</span>
+        <span class="word-pinyin">ānxīn</span>
+        <span class="word-en"><em>feel at ease; relieved; peace of mind</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>心情平静，没有担忧和不安。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Mind is calm; free from worry and unease.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">安</span> <span class="plus">+</span> <span class="char-break">心</span> <span class="equals">=</span> <span class="result">安心</span><br/>
+        安 (ān) = peaceful; safe; calm  |  心 (xīn) = heart; mind<br/>
+        → <em>A peaceful heart — at ease.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">知道她安全到家，我才<strong>安心</strong>。</span>
+        <span class="ex-en"><em>Only after knowing she got home safely could I feel at ease.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="positive" data-term="自豪 zìháo proud; pride 中文释义 因为自己或与自己相关的人取得了成就而感到光荣。 english meaning feeling honored because of one's own or a related person's achievements.">
+      <div class="word-main">
+        <span class="word-zh">自豪</span>
+        <span class="word-pinyin">zìháo</span>
+        <span class="word-en"><em>proud; pride</em></span>
+        <span class="category-badge">积极情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为自己或与自己相关的人取得了成就而感到光荣。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling honored because of one's own or a related person's achievements.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">自</span> <span class="plus">+</span> <span class="char-break">豪</span> <span class="equals">=</span> <span class="result">自豪</span><br/>
+        自 (zì) = self  |  豪 (háo) = grand; heroic; proud<br/>
+        → <em>Self-grandeur — proud.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">父母为孩子的成功感到<strong>自豪</strong>。</span>
+        <span class="ex-en"><em>Parents are proud of their child's success.</em></span>
+      </div>
+    </div>
+  </div></details>
+  <details class="category-group"><summary>负面与压力情绪 <span class="category-note">Negative &amp; Stress</span></summary><div class="group-body">
+    <div class="word-card" data-category="negative" data-term="焦虑 jiāolǜ anxiety; anxious 中文释义 对未来的事情感到担心、紧张和不安。 english meaning feeling worried, nervous, and uneasy about future events.">
+      <div class="word-main">
+        <span class="word-zh">焦虑</span>
+        <span class="word-pinyin">jiāolǜ</span>
+        <span class="word-en"><em>anxiety; anxious</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对未来的事情感到担心、紧张和不安。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling worried, nervous, and uneasy about future events.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">焦</span> <span class="plus">+</span> <span class="char-break">虑</span> <span class="equals">=</span> <span class="result">焦虑</span><br/>
+        焦 (jiāo) = burnt; scorched; anxious  |  虑 (lǜ) = to worry; to consider<br/>
+        → <em>Burnt with worry — anxious and concerned.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">考试前他感到非常<strong>焦虑</strong>。</span>
+        <span class="ex-en"><em>He felt very anxious before the exam.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="紧张 jǐnzhāng nervous; tense 中文释义 精神处于高度戒备状态，感到不安和压力。 english meaning mentally on high alert; feeling uneasy and pressured.">
+      <div class="word-main">
+        <span class="word-zh">紧张</span>
+        <span class="word-pinyin">jǐnzhāng</span>
+        <span class="word-en"><em>nervous; tense</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>精神处于高度戒备状态，感到不安和压力。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Mentally on high alert; feeling uneasy and pressured.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">紧</span> <span class="plus">+</span> <span class="char-break">张</span> <span class="equals">=</span> <span class="result">紧张</span><br/>
+        紧 (jǐn) = tight; tense  |  张 (zhāng) = to stretch; to spread<br/>
+        → <em>Tightly stretched — nervous.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">第一次上台，他非常<strong>紧张</strong>。</span>
+        <span class="ex-en"><em>On stage for the first time, he was very nervous.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="悲伤 bēishāng sad; sorrowful; grieved 中文释义 因为失去或不幸而感到心痛和难过。 english meaning feeling heartache and distress due to loss or misfortune.">
+      <div class="word-main">
+        <span class="word-zh">悲伤</span>
+        <span class="word-pinyin">bēishāng</span>
+        <span class="word-en"><em>sad; sorrowful; grieved</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为失去或不幸而感到心痛和难过。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling heartache and distress due to loss or misfortune.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">悲</span> <span class="plus">+</span> <span class="char-break">伤</span> <span class="equals">=</span> <span class="result">悲伤</span><br/>
+        悲 (bēi) = sad; sorrowful  |  伤 (shāng) = wound; injury; to hurt<br/>
+        → <em>Sorrow that wounds — grief.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">听到这个消息，她非常<strong>悲伤</strong>。</span>
+        <span class="ex-en"><em>She was very sad when she heard the news.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="难过 nánguò sad; grieved; heartbroken 中文释义 心里不舒服，感到伤心。 english meaning feeling uncomfortable in the heart; sad.">
+      <div class="word-main">
+        <span class="word-zh">难过</span>
+        <span class="word-pinyin">nánguò</span>
+        <span class="word-en"><em>sad; grieved; heartbroken</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>心里不舒服，感到伤心。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling uncomfortable in the heart; sad.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">难</span> <span class="plus">+</span> <span class="char-break">过</span> <span class="equals">=</span> <span class="result">难过</span><br/>
+        难 (nán) = difficult; hard to bear  |  过 (guò) = to pass; to go through<br/>
+        → <em>Hard to get through — heartbroken.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">别<strong>难过</strong>了，一切都会好起来的。</span>
+        <span class="ex-en"><em>Don't be sad; everything will be better.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="失望 shīwàng disappointed; let down 中文释义 希望落了空，感到没有达到预期而失落。 english meaning hope has fallen through; feeling let down because expectations weren't met.">
+      <div class="word-main">
+        <span class="word-zh">失望</span>
+        <span class="word-pinyin">shīwàng</span>
+        <span class="word-en"><em>disappointed; let down</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>希望落了空，感到没有达到预期而失落。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Hope has fallen through; feeling let down because expectations weren't met.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">失</span> <span class="plus">+</span> <span class="char-break">望</span> <span class="equals">=</span> <span class="result">失望</span><br/>
+        失 (shī) = to lose; to fail  |  望 (wàng) = hope; expectation<br/>
+        → <em>Losing hope — disappointed.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他对结果感到非常<strong>失望</strong>。</span>
+        <span class="ex-en"><em>He was very disappointed with the result.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="愤怒 fènnù angry; furious; indignant 中文释义 因为受到不公平待遇或伤害而产生强烈的生气情绪。 english meaning a strong feeling of anger due to unfair treatment or harm.">
+      <div class="word-main">
+        <span class="word-zh">愤怒</span>
+        <span class="word-pinyin">fènnù</span>
+        <span class="word-en"><em>angry; furious; indignant</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为受到不公平待遇或伤害而产生强烈的生气情绪。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A strong feeling of anger due to unfair treatment or harm.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">愤</span> <span class="plus">+</span> <span class="char-break">怒</span> <span class="equals">=</span> <span class="result">愤怒</span><br/>
+        愤 (fèn) = indignation; resentment  |  怒 (nù) = anger; rage<br/>
+        → <em>Indignant anger — furious.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他的行为让大家感到<strong>愤怒</strong>。</span>
+        <span class="ex-en"><em>His behavior made everyone angry.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="negative" data-term="压抑 yāyì repressed; oppressed; stifled 中文释义 情绪、想法被压制在心里，无法自由表达。 english meaning emotions or thoughts are suppressed inside, unable to be freely expressed.">
+      <div class="word-main">
+        <span class="word-zh">压抑</span>
+        <span class="word-pinyin">yāyì</span>
+        <span class="word-en"><em>repressed; oppressed; stifled</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>情绪、想法被压制在心里，无法自由表达。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Emotions or thoughts are suppressed inside, unable to be freely expressed.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">压</span> <span class="plus">+</span> <span class="char-break">抑</span> <span class="equals">=</span> <span class="result">压抑</span><br/>
+        压 (yā) = to press; to suppress  |  抑 (yì) = to restrain; to repress<br/>
+        → <em>Pressed down and restrained — repressed.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">不要把情绪<strong>压抑</strong>在心里。</span>
+        <span class="ex-en"><em>Don't bottle up your emotions.</em></span>
+      </div>
+    </div>
+    <!-- 新增：憎恶 -->
+    <div class="word-card" data-category="negative" data-term="憎恶 zēngwù abhor; detest 中文释义 对某人或某事极度厌恶、痛恨。 english meaning to strongly dislike or hate someone or something.">
+      <div class="word-main">
+        <span class="word-zh">憎恶</span>
+        <span class="word-pinyin">zēngwù</span>
+        <span class="word-en"><em>abhor; detest</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对某人或某事极度厌恶、痛恨。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To strongly dislike or hate someone or something.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">憎</span> <span class="plus">+</span> <span class="char-break">恶</span> <span class="equals">=</span> <span class="result">憎恶</span><br/>
+        憎 (zēng) = to hate; to abhor  |  恶 (wù) = to loathe; to dislike<br/>
+        → <em>Hate and loathe.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他非常<strong>憎恶</strong>那些虚伪的人。</span>
+        <span class="ex-en"><em>He detests hypocritical people.</em></span>
+      </div>
+    </div>
+    <!-- 新增：悔恨 -->
+    <div class="word-card" data-category="negative" data-term="悔恨 huǐhèn regret deeply; remorse 中文释义 对过去的错误或过失感到深深的后悔和自责。 english meaning deep regret and self-reproach for past mistakes or faults.">
+      <div class="word-main">
+        <span class="word-zh">悔恨</span>
+        <span class="word-pinyin">huǐhèn</span>
+        <span class="word-en"><em>regret deeply; remorse</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对过去的错误或过失感到深深的后悔和自责。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Deep regret and self-reproach for past mistakes or faults.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">悔</span> <span class="plus">+</span> <span class="char-break">恨</span> <span class="equals">=</span> <span class="result">悔恨</span><br/>
+        悔 (huǐ) = to regret; to repent  |  恨 (hèn) = to hate; resentment<br/>
+        → <em>Regret mixed with self‑resentment.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他对自己曾经的决定感到<strong>悔恨</strong>。</span>
+        <span class="ex-en"><em>He felt deep remorse for his past decisions.</em></span>
+      </div>
+    </div>
+    <!-- 新增：嫉恨 -->
+    <div class="word-card" data-category="negative" data-term="嫉恨 jíhèn envy and resentment; begrudge 中文释义 因嫉妒而怀恨在心，对他人怀有敌意。 english meaning to harbor resentment and ill will toward others out of envy.">
+      <div class="word-main">
+        <span class="word-zh">嫉恨</span>
+        <span class="word-pinyin">jíhèn</span>
+        <span class="word-en"><em>envy and resentment; begrudge</em></span>
+        <span class="category-badge">负面与压力情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因嫉妒而怀恨在心，对他人怀有敌意。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To harbor resentment and ill will toward others out of envy.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">嫉</span> <span class="plus">+</span> <span class="char-break">恨</span> <span class="equals">=</span> <span class="result">嫉恨</span><br/>
+        嫉 (jí) = envy; jealousy  |  恨 (hèn) = hatred; resentment<br/>
+        → <em>Envy turning into hatred.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她对他人的成功产生了<strong>嫉恨</strong>。</span>
+        <span class="ex-en"><em>She bore resentment toward others' success.</em></span>
+      </div>
+    </div>
+  </div></details>
+  <details class="category-group"><summary>社会性与自我意识情绪 <span class="category-note">Social &amp; Self-Conscious</span></summary><div class="group-body">
+    <div class="word-card" data-category="social-emotion" data-term="委屈 wěiqu feel wronged; aggrieved 中文释义 受到不公平的指责或对待，心里感到难受和冤枉。 english meaning feeling hurt and unjustly treated due to unfair blame or treatment.">
+      <div class="word-main">
+        <span class="word-zh">委屈</span>
+        <span class="word-pinyin">wěiqu</span>
+        <span class="word-en"><em>feel wronged; aggrieved</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>受到不公平的指责或对待，心里感到难受和冤枉。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling hurt and unjustly treated due to unfair blame or treatment.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">委</span> <span class="plus">+</span> <span class="char-break">屈</span> <span class="equals">=</span> <span class="result">委屈</span><br/>
+        委 (wěi) = to entrust; to bend; injustice  |  屈 (qū) = to bend; to submit; wronged<br/>
+        → <em>Bent by injustice — aggrieved.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">被冤枉的时候，她觉得很<strong>委屈</strong>。</span>
+        <span class="ex-en"><em>When wrongly accused, she felt very wronged.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="羞愧 xiūkuì ashamed; mortified 中文释义 因为自己的错误或不足而感到丢脸和惭愧。 english meaning feeling embarrassed and ashamed due to one's own mistakes or shortcomings.">
+      <div class="word-main">
+        <span class="word-zh">羞愧</span>
+        <span class="word-pinyin">xiūkuì</span>
+        <span class="word-en"><em>ashamed; mortified</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为自己的错误或不足而感到丢脸和惭愧。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling embarrassed and ashamed due to one's own mistakes or shortcomings.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">羞</span> <span class="plus">+</span> <span class="char-break">愧</span> <span class="equals">=</span> <span class="result">羞愧</span><br/>
+        羞 (xiū) = shy; ashamed; embarrassed  |  愧 (kuì) = ashamed; remorseful<br/>
+        → <em>Doubly ashamed — mortified.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他对自己的行为感到<strong>羞愧</strong>。</span>
+        <span class="ex-en"><em>He felt ashamed of his actions.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="内疚 nèijiù guilty; remorseful 中文释义 因为做了错事或伤害了别人而感到心里不安和自责。 english meaning feeling uneasy and self-reproachful for having done wrong or hurt someone.">
+      <div class="word-main">
+        <span class="word-zh">内疚</span>
+        <span class="word-pinyin">nèijiù</span>
+        <span class="word-en"><em>guilty; remorseful</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为做了错事或伤害了别人而感到心里不安和自责。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling uneasy and self-reproachful for having done wrong or hurt someone.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">内</span> <span class="plus">+</span> <span class="char-break">疚</span> <span class="equals">=</span> <span class="result">内疚</span><br/>
+        内 (nèi) = inside; inner  |  疚 (jiù) = remorse; guilt<br/>
+        → <em>Inner guilt — remorse.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他因为撒谎而感到<strong>内疚</strong>。</span>
+        <span class="ex-en"><em>He felt guilty for lying.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="后悔 hòuhuǐ regret; feel remorse 中文释义 对已经发生的事情感到不应该那样做，希望可以重新来过。 english meaning feeling that something in the past should not have been done; wishing to do it over.">
+      <div class="word-main">
+        <span class="word-zh">后悔</span>
+        <span class="word-pinyin">hòuhuǐ</span>
+        <span class="word-en"><em>regret; feel remorse</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对已经发生的事情感到不应该那样做，希望可以重新来过。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling that something in the past should not have been done; wishing to do it over.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">后</span> <span class="plus">+</span> <span class="char-break">悔</span> <span class="equals">=</span> <span class="result">后悔</span><br/>
+        后 (hòu) = after; later  |  悔 (huǐ) = to regret; to repent<br/>
+        → <em>Afterwards regret.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">我<strong>后悔</strong>没有早点告诉她真相。</span>
+        <span class="ex-en"><em>I regret not telling her the truth earlier.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="嫉妒 jídù jealous; envious 中文释义 因为别人拥有自己想要的东西而感到不满和怨恨。 english meaning feeling discontent and resentment because others have what one wants.">
+      <div class="word-main">
+        <span class="word-zh">嫉妒</span>
+        <span class="word-pinyin">jídù</span>
+        <span class="word-en"><em>jealous; envious</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为别人拥有自己想要的东西而感到不满和怨恨。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling discontent and resentment because others have what one wants.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">嫉</span> <span class="plus">+</span> <span class="char-break">妒</span> <span class="equals">=</span> <span class="result">嫉妒</span><br/>
+        嫉 (jí) = to envy; to hate  |  妒 (dù) = jealousy; envy<br/>
+        → <em>Envious jealousy.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">不要<strong>嫉妒</strong>别人的成功。</span>
+        <span class="ex-en"><em>Don't be jealous of others' success.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="感动 gǎndòng touched; moved (emotionally) 中文释义 因为别人的好意或感人事情而心里受到触动。 english meaning the heart is stirred by others' kindness or touching events.">
+      <div class="word-main">
+        <span class="word-zh">感动</span>
+        <span class="word-pinyin">gǎndòng</span>
+        <span class="word-en"><em>touched; moved (emotionally)</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为别人的好意或感人事情而心里受到触动。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The heart is stirred by others' kindness or touching events.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">感</span> <span class="plus">+</span> <span class="char-break">动</span> <span class="equals">=</span> <span class="result">感动</span><br/>
+        感 (gǎn) = to feel; emotion  |  动 (dòng) = to move; movement<br/>
+        → <em>Emotionally moved.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他的故事让我非常<strong>感动</strong>。</span>
+        <span class="ex-en"><em>His story moved me deeply.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="感激 gǎnjī grateful; thankful 中文释义 因为别人的帮助而心里充满感谢。 english meaning filled with thanks because of others' help.">
+      <div class="word-main">
+        <span class="word-zh">感激</span>
+        <span class="word-pinyin">gǎnjī</span>
+        <span class="word-en"><em>grateful; thankful</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因为别人的帮助而心里充满感谢。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Filled with thanks because of others' help.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">感</span> <span class="plus">+</span> <span class="char-break">激</span> <span class="equals">=</span> <span class="result">感激</span><br/>
+        感 (gǎn) = to feel  |  激 (jī) = to arouse; to excite; intense<br/>
+        → <em>Intensely felt thanks — grateful.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">我非常<strong>感激</strong>你的帮助。</span>
+        <span class="ex-en"><em>I am very grateful for your help.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="孤独 gūdú lonely; solitary 中文释义 一个人感到孤单，没有陪伴和理解。 english meaning feeling alone without companionship or understanding.">
+      <div class="word-main">
+        <span class="word-zh">孤独</span>
+        <span class="word-pinyin">gūdú</span>
+        <span class="word-en"><em>lonely; solitary</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>一个人感到孤单，没有陪伴和理解。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling alone without companionship or understanding.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">孤</span> <span class="plus">+</span> <span class="char-break">独</span> <span class="equals">=</span> <span class="result">孤独</span><br/>
+        孤 (gū) = alone; orphaned; isolated  |  独 (dú) = alone; single; independent<br/>
+        → <em>Alone and solitary — lonely.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">有时候，他会感到深深的<strong>孤独</strong>。</span>
+        <span class="ex-en"><em>Sometimes, he feels deeply lonely.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="social-emotion" data-term="羞怯 xiūqiè shy; bashful; timid 中文释义 因害羞或缺乏自信而表现得拘谨、不自然，不太敢主动表达自己。 english meaning feeling shy, self-conscious, or timid, often making a person hesitant to speak or act openly.">
+      <div class="word-main">
+        <span class="word-zh">羞怯</span>
+        <span class="word-pinyin">xiūqiè</span>
+        <span class="word-en"><em>shy; bashful; timid</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>因害羞或缺乏自信而表现得拘谨、不自然，不太敢主动表达自己。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling shy, self-conscious, or timid, often making a person hesitant to speak or act openly.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">羞</span> <span class="plus">+</span> <span class="char-break">怯</span> <span class="equals">=</span> <span class="result">羞怯</span><br/>羞 (xiū) = shy; ashamed  |  怯 (qiè) = timid; fearful<br/>→ <em>Shy and timid — bashful.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她第一次见到陌生人时有些<strong>羞怯</strong>。</span>
+        <span class="ex-en"><em>She was a little shy when meeting strangers for the first time.</em></span>
+      </div>
+    </div>
+    <!-- 新增：羡慕 -->
+    <div class="word-card" data-category="social-emotion" data-term="羡慕 xiànmù admire; envy (positive) 中文释义 看到别人有优点或好处，自己也想拥有。 english meaning to admire and wish to have what others have (often neutral or positive).">
+      <div class="word-main">
+        <span class="word-zh">羡慕</span>
+        <span class="word-pinyin">xiànmù</span>
+        <span class="word-en"><em>admire; envy (positive)</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>看到别人有优点或好处，自己也想拥有。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To admire and wish to have what others have (often neutral or positive).</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">羡</span> <span class="plus">+</span> <span class="char-break">慕</span> <span class="equals">=</span> <span class="result">羡慕</span><br/>
+        羡 (xiàn) = to admire; to envy  |  慕 (mù) = to yearn for; to admire<br/>
+        → <em>Admiring and yearning.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">我很<strong>羡慕</strong>他的才华。</span>
+        <span class="ex-en"><em>I admire his talent.</em></span>
+      </div>
+    </div>
+    <!-- 新增：惋惜 -->
+    <div class="word-card" data-category="social-emotion" data-term="惋惜 wǎnxī feel pity; regret 中文释义 对别人的不幸或损失感到可惜和同情。 english meaning to feel pity and sympathy for someone's misfortune or loss.">
+      <div class="word-main">
+        <span class="word-zh">惋惜</span>
+        <span class="word-pinyin">wǎnxī</span>
+        <span class="word-en"><em>feel pity; regret</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对别人的不幸或损失感到可惜和同情。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To feel pity and sympathy for someone's misfortune or loss.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">惋</span> <span class="plus">+</span> <span class="char-break">惜</span> <span class="equals">=</span> <span class="result">惋惜</span><br/>
+        惋 (wǎn) = to sigh; to regret  |  惜 (xī) = to cherish; to pity<br/>
+        → <em>Sighing with pity.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">大家都为他的遭遇感到<strong>惋惜</strong>。</span>
+        <span class="ex-en"><em>Everyone felt pity for his misfortune.</em></span>
+      </div>
+    </div>
+    <!-- 新增：令人惋惜 -->
+    <div class="word-card" data-category="social-emotion" data-term="令人惋惜 lìng rén wǎnxī regrettable; pitiful 中文释义 使人感到可惜和遗憾。 english meaning causing people to feel pity or regret.">
+      <div class="word-main">
+        <span class="word-zh">令人惋惜</span>
+        <span class="word-pinyin">lìng rén wǎnxī</span>
+        <span class="word-en"><em>regrettable; pitiful</em></span>
+        <span class="category-badge">社会性与自我意识情绪</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>使人感到可惜和遗憾。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Causing people to feel pity or regret.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">令人</span> <span class="plus">+</span> <span class="char-break">惋惜</span> <span class="equals">=</span> <span class="result">令人惋惜</span><br/>
+        令人 (lìng rén) = to cause people  |  惋惜 (wǎnxī) = to pity; to regret<br/>
+        → <em>That which causes regret.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">这个结局<strong>令人惋惜</strong>。</span>
+        <span class="ex-en"><em>This ending is regrettable.</em></span>
+      </div>
+    </div>
+  </div></details>
+  <details class="category-group"><summary>复杂与矛盾状态 <span class="category-note">Complex &amp; Conflicted</span></summary><div class="group-body">
+    <div class="word-card" data-category="cognitive-emotion" data-term="困惑 kùnhuò confused; perplexed 中文释义 感到不明白，不知道该怎么办。 english meaning feeling not understanding; not knowing what to do.">
+      <div class="word-main">
+        <span class="word-zh">困惑</span>
+        <span class="word-pinyin">kùnhuò</span>
+        <span class="word-en"><em>confused; perplexed</em></span>
+        <span class="category-badge">复杂与矛盾状态</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>感到不明白，不知道该怎么办。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Feeling not understanding; not knowing what to do.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">困</span> <span class="plus">+</span> <span class="char-break">惑</span> <span class="equals">=</span> <span class="result">困惑</span><br/>
+        困 (kùn) = trapped; difficult; sleepy  |  惑 (huò) = puzzled; confused; doubt<br/>
+        → <em>Trapped in confusion — perplexed.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">这个问题让我很<strong>困惑</strong>。</span>
+        <span class="ex-en"><em>This question makes me very confused.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="cognitive-emotion" data-term="纠结 jiūjié entangled; conflicted; struggling to decide 中文释义 心里矛盾，难以做出选择或放下某事。 english meaning internally conflicted; hard to make a choice or let go of something.">
+      <div class="word-main">
+        <span class="word-zh">纠结</span>
+        <span class="word-pinyin">jiūjié</span>
+        <span class="word-en"><em>entangled; conflicted; struggling to decide</em></span>
+        <span class="category-badge">复杂与矛盾状态</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>心里矛盾，难以做出选择或放下某事。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Internally conflicted; hard to make a choice or let go of something.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">纠</span> <span class="plus">+</span> <span class="char-break">结</span> <span class="equals">=</span> <span class="result">纠结</span><br/>
+        纠 (jiū) = to entangle; to gather  |  结 (jié) = knot; to tie; to form<br/>
+        → <em>Tangled in knots — conflicted.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">我在两个选择之间<strong>纠结</strong>了很久。</span>
+        <span class="ex-en"><em>I struggled between the two choices for a long time.</em></span>
+      </div>
+    </div>
+  </div></details>
+</div>
+
+<div class="section" id="sec-self">
+  <div class="section-header"><span class="emoji">🌟</span><h2>自我、性格与调节 <small>Self, Personality &amp; Regulation</small></h2></div>
+  <details class="category-group" open><summary>自我与性格倾向 <span class="category-note">Self &amp; Personality</span></summary><div class="group-body">
+    <div class="word-card" data-category="self" data-term="自卑感 zìbēi gǎn inferiority complex; feeling of inferiority 中文释义 觉得自己不如别人，看不起自己的感觉。 english meaning a feeling of being less than others; looking down on oneself.">
+      <div class="word-main">
+        <span class="word-zh">自卑感</span>
+        <span class="word-pinyin">zìbēi gǎn</span>
+        <span class="word-en"><em>inferiority complex; feeling of inferiority</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>觉得自己不如别人，看不起自己的感觉。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A feeling of being less than others; looking down on oneself.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">自</span> <span class="plus">+</span> <span class="char-break">卑</span> <span class="plus">+</span> <span class="char-break">感</span> <span class="equals">=</span> <span class="result">自卑感</span><br/>
+        自 (zì) = self  |  卑 (bēi) = low; humble; inferior  |  感 (gǎn) = feeling<br/>
+        → <em>A feeling of self-lowliness.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他因为个子矮而有<strong>自卑感</strong>。</span>
+        <span class="ex-en"><em>He has an inferiority complex because of his short height.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="self" data-term="自尊心 zìzūnxīn self-esteem; self-respect 中文释义 尊重自己，不容许别人歧视或侮辱的心理。 english meaning the psychology of respecting oneself and not allowing others to discriminate or insult.">
+      <div class="word-main">
+        <span class="word-zh">自尊心</span>
+        <span class="word-pinyin">zìzūnxīn</span>
+        <span class="word-en"><em>self-esteem; self-respect</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>尊重自己，不容许别人歧视或侮辱的心理。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The psychology of respecting oneself and not allowing others to discriminate or insult.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">自</span> <span class="plus">+</span> <span class="char-break">尊</span> <span class="plus">+</span> <span class="char-break">心</span> <span class="equals">=</span> <span class="result">自尊心</span><br/>
+        自 (zì) = self  |  尊 (zūn) = to respect; honor  |  心 (xīn) = heart; mind<br/>
+        → <em>A heart that respects itself.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">不要伤害孩子的<strong>自尊心</strong>。</span>
+        <span class="ex-en"><em>Don't hurt a child's self-esteem.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="self" data-term="感性 gǎnxìng emotional; sensitive; perceptual 中文释义 凭感觉、情感来判断和行动的方式。 english meaning a way of judging and acting based on feelings and emotions.">
+      <div class="word-main">
+        <span class="word-zh">感性</span>
+        <span class="word-pinyin">gǎnxìng</span>
+        <span class="word-en"><em>emotional; sensitive; perceptual</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>凭感觉、情感来判断和行动的方式。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A way of judging and acting based on feelings and emotions.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">感</span> <span class="plus">+</span> <span class="char-break">性</span> <span class="equals">=</span> <span class="result">感性</span><br/>
+        感 (gǎn) = to feel; emotion  |  性 (xìng) = nature; quality; disposition<br/>
+        → <em>An emotional nature.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她是个很<strong>感性</strong>的人，看电影经常哭。</span>
+        <span class="ex-en"><em>She is a very emotional person and often cries during movies.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="self" data-term="理性 lǐxìng rational; reason 中文释义 用逻辑和思考来判断和行动的方式。 english meaning a way of judging and acting using logic and reasoning.">
+      <div class="word-main">
+        <span class="word-zh">理性</span>
+        <span class="word-pinyin">lǐxìng</span>
+        <span class="word-en"><em>rational; reason</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>用逻辑和思考来判断和行动的方式。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A way of judging and acting using logic and reasoning.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">理</span> <span class="plus">+</span> <span class="char-break">性</span> <span class="equals">=</span> <span class="result">理性</span><br/>
+        理 (lǐ) = reason; logic; principle  |  性 (xìng) = nature; disposition<br/>
+        → <em>A rational nature.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">面对问题，我们需要<strong>理性</strong>思考。</span>
+        <span class="ex-en"><em>When facing problems, we need to think rationally.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="self" data-term="意志力 yìzhì lì willpower 中文释义 控制自己的行为、情绪和冲动的能力。 english meaning the ability to control one's behavior, emotions, and impulses.">
+      <div class="word-main">
+        <span class="word-zh">意志力</span>
+        <span class="word-pinyin">yìzhì lì</span>
+        <span class="word-en"><em>willpower</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>控制自己的行为、情绪和冲动的能力。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>The ability to control one's behavior, emotions, and impulses.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">意志</span> <span class="plus">+</span> <span class="char-break">力</span> <span class="equals">=</span> <span class="result">意志力</span><br/>
+        意志 (yìzhì) = will; determination  |  力 (lì) = power; strength<br/>
+        → <em>The power of will.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">戒烟需要很强的<strong>意志力</strong>。</span>
+        <span class="ex-en"><em>Quitting smoking requires strong willpower.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="self" data-term="冷静 lěngjìng calm; cool-headed 中文释义 情绪稳定，不慌张、不激动的状态。 english meaning a state of emotional stability; not panicked or agitated.">
+      <div class="word-main">
+        <span class="word-zh">冷静</span>
+        <span class="word-pinyin">lěngjìng</span>
+        <span class="word-en"><em>calm; cool-headed</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>情绪稳定，不慌张、不激动的状态。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A state of emotional stability; not panicked or agitated.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">冷</span> <span class="plus">+</span> <span class="char-break">静</span> <span class="equals">=</span> <span class="result">冷静</span><br/>
+        冷 (lěng) = cold; cool  |  静 (jìng) = quiet; still; calm<br/>
+        → <em>Cool and calm.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">遇到紧急情况要保持<strong>冷静</strong>。</span>
+        <span class="ex-en"><em>Stay calm in an emergency.</em></span>
+      </div>
+    </div>
+    <!-- 新增：矜持 -->
+    <div class="word-card" data-category="self" data-term="矜持 jīnchí reserved; restrained; self-possessed 中文释义 保持庄重、不轻易流露感情或态度。 english meaning to maintain dignity and not easily show emotions or opinions.">
+      <div class="word-main">
+        <span class="word-zh">矜持</span>
+        <span class="word-pinyin">jīnchí</span>
+        <span class="word-en"><em>reserved; restrained; self-possessed</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>保持庄重、不轻易流露感情或态度。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To maintain dignity and not easily show emotions or opinions.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">矜</span> <span class="plus">+</span> <span class="char-break">持</span> <span class="equals">=</span> <span class="result">矜持</span><br/>
+        矜 (jīn) = self-important; to boast; to pity  |  持 (chí) = to hold; to maintain<br/>
+        → <em>Holding oneself with dignity.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她为人<strong>矜持</strong>，不太主动与人交谈。</span>
+        <span class="ex-en"><em>She is reserved and not very talkative with others.</em></span>
+      </div>
+    </div>
+    <!-- 新增：禀性愚顽 -->
+    <div class="word-card" data-category="self" data-term="禀性愚顽 bǐngxìng yúwán naturally stubborn and obtuse 中文释义 天生的性格愚蠢顽固。 english meaning naturally stupid and stubborn in disposition.">
+      <div class="word-main">
+        <span class="word-zh">禀性愚顽</span>
+        <span class="word-pinyin">bǐngxìng yúwán</span>
+        <span class="word-en"><em>naturally stubborn and obtuse</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>天生的性格愚蠢顽固。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Naturally stupid and stubborn in disposition.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">禀性</span> <span class="plus">+</span> <span class="char-break">愚顽</span> <span class="equals">=</span> <span class="result">禀性愚顽</span><br/>
+        禀性 (bǐngxìng) = natural disposition  |  愚顽 (yúwán) = stupid and stubborn<br/>
+        → <em>A disposition that is both foolish and obstinate.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他<strong>禀性愚顽</strong>，很难改变。</span>
+        <span class="ex-en"><em>He is naturally stubborn and obtuse; it's hard to change him.</em></span>
+      </div>
+    </div>
+    <!-- 新增：怯懦 -->
+    <div class="word-card" data-category="self" data-term="怯懦 qiènuò timid; cowardly 中文释义 胆小怕事，缺乏勇气。 english meaning timid and lacking courage.">
+      <div class="word-main">
+        <span class="word-zh">怯懦</span>
+        <span class="word-pinyin">qiènuò</span>
+        <span class="word-en"><em>timid; cowardly</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>胆小怕事，缺乏勇气。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Timid and lacking courage.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">怯</span> <span class="plus">+</span> <span class="char-break">懦</span> <span class="equals">=</span> <span class="result">怯懦</span><br/>
+        怯 (qiè) = timid; frightened  |  懦 (nuò) = cowardly; weak<br/>
+        → <em>Timid and weak — cowardly.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他的<strong>怯懦</strong>让他错过了很多机会。</span>
+        <span class="ex-en"><em>His timidity made him miss many opportunities.</em></span>
+      </div>
+    </div>
+    <!-- 新增：稳妥 -->
+    <div class="word-card" data-category="self" data-term="稳妥 wěntuǒ safe; reliable; steady 中文释义 稳当可靠，不冒险。 english meaning steady, reliable, and not taking risks.">
+      <div class="word-main">
+        <span class="word-zh">稳妥</span>
+        <span class="word-pinyin">wěntuǒ</span>
+        <span class="word-en"><em>safe; reliable; steady</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>稳当可靠，不冒险。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Steady, reliable, and not taking risks.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">稳</span> <span class="plus">+</span> <span class="char-break">妥</span> <span class="equals">=</span> <span class="result">稳妥</span><br/>
+        稳 (wěn) = steady; stable  |  妥 (tuǒ) = proper; suitable; ready<br/>
+        → <em>Steady and proper — reliable.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">这个计划很<strong>稳妥</strong>。</span>
+        <span class="ex-en"><em>This plan is very reliable.</em></span>
+      </div>
+    </div>
+    <!-- 新增：彪悍 -->
+    <div class="word-card" data-category="self" data-term="彪悍 biāohàn strong; fierce; tough 中文释义 勇猛强悍，有气势。 english meaning brave, fierce, and imposing.">
+      <div class="word-main">
+        <span class="word-zh">彪悍</span>
+        <span class="word-pinyin">biāohàn</span>
+        <span class="word-en"><em>strong; fierce; tough</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>勇猛强悍，有气势。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Brave, fierce, and imposing.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">彪</span> <span class="plus">+</span> <span class="char-break">悍</span> <span class="equals">=</span> <span class="result">彪悍</span><br/>
+        彪 (biāo) = tiger stripes; vigorous  |  悍 (hàn) = fierce; bold; brave<br/>
+        → <em>Fierce as a tiger — tough.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他性格<strong>彪悍</strong>，从不畏惧挑战。</span>
+        <span class="ex-en"><em>He has a tough personality and never fears challenges.</em></span>
+      </div>
+    </div>
+    <!-- 新增：执拗 -->
+    <div class="word-card" data-category="self" data-term="执拗 zhíniù stubborn; obstinate 中文释义 坚持己见，不肯改变。 english meaning stubbornly sticking to one's own opinions; unyielding.">
+      <div class="word-main">
+        <span class="word-zh">执拗</span>
+        <span class="word-pinyin">zhíniù</span>
+        <span class="word-en"><em>stubborn; obstinate</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>坚持己见，不肯改变。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Stubbornly sticking to one's own opinions; unyielding.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">执</span> <span class="plus">+</span> <span class="char-break">拗</span> <span class="equals">=</span> <span class="result">执拗</span><br/>
+        执 (zhí) = to hold; to persist  |  拗 (niù) = stubborn; contrary<br/>
+        → <em>Persistently stubborn.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他性格<strong>执拗</strong>，不听劝告。</span>
+        <span class="ex-en"><em>He is obstinate and doesn't listen to advice.</em></span>
+      </div>
+    </div>
+    <!-- 新增：冷静而镇定的个人 -->
+    <div class="word-card" data-category="self" data-term="冷静而镇定的个人 lěngjìng ér zhèndìng de gèrén calm and collected individual 中文释义 形容一个人遇事不慌，沉着冷静。 english meaning a person who stays calm and composed in difficult situations.">
+      <div class="word-main">
+        <span class="word-zh">冷静而镇定的个人</span>
+        <span class="word-pinyin">lěngjìng ér zhèndìng de gèrén</span>
+        <span class="word-en"><em>calm and collected individual</em></span>
+        <span class="category-badge">自我与性格倾向</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>形容一个人遇事不慌，沉着冷静。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A person who stays calm and composed in difficult situations.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">冷静</span> <span class="plus">+</span> <span class="char-break">而</span> <span class="plus">+</span> <span class="char-break">镇定</span> <span class="plus">+</span> <span class="char-break">的</span> <span class="plus">+</span> <span class="char-break">个人</span> <span class="equals">=</span> <span class="result">冷静而镇定的个人</span><br/>
+        冷静 (lěngjìng) = calm; cool  |  镇定 (zhèndìng) = composed; unflappable  |  个人 (gèrén) = individual<br/>
+        → <em>A calm and composed person.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">面对危机，他是一个<strong>冷静而镇定的个人</strong>。</span>
+        <span class="ex-en"><em>In a crisis, he is a calm and collected individual.</em></span>
+      </div>
+    </div>
+  </div></details>
+  <details class="category-group"><summary>人生体验与处境 <span class="category-note">Life Experience</span></summary><div class="group-body">
+    <div class="word-card star-word" data-category="life" data-term="坎坷 kǎnkě full of frustrations; bumpy; rough (of life/path) 中文释义 道路坑坑洼洼不平坦。比喻人生不顺利，充满困难挫折。 english meaning a road full of bumps and holes. metaphor for a life that is not smooth; full of hardships and setbacks.">
+      <div class="word-main">
+        <span class="word-zh">坎坷</span>
+        <span class="star-badge">⭐ FEATURED</span>
+        <span class="word-pinyin">kǎnkě</span>
+        <span class="word-en"><em>full of frustrations; bumpy; rough (of life/path)</em></span>
+        <span class="category-badge">人生体验与处境</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>道路坑坑洼洼不平坦。比喻人生不顺利，充满困难挫折。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A road full of bumps and holes. Metaphor for a life that is not smooth; full of hardships and setbacks.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">坎</span> <span class="plus">+</span> <span class="char-break">坷</span> <span class="equals">=</span> <span class="result">坎坷</span><br/>
+        坎 (kǎn) = pit; hole; threshold; difficulty  |  坷 (kě) = uneven; bumpy<br/>
+        → <em>Full of pits and bumps — a rough, difficult journey.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">那位阿姨怎么这么<strong>坎坷</strong>，一辈子吃了这么多苦。</span>
+        <span class="ex-en"><em>That auntie has had such a rough life, enduring so much hardship.</em></span>
+      </div>
+    </div>
+  </div></details>
+</div>
+
+<div class="section" id="sec-relationships">
+  <div class="section-header"><span class="emoji">❤️</span><h2>人际与情感关系 <small>Relationships</small></h2></div>
+  <details class="category-group" open><summary>关系与情感纠葛 <span class="category-note">Relationships &amp; Entanglement</span></summary><div class="group-body">
+    <div class="word-card" data-category="relationships" data-term="纠葛 jiūgé entanglement; complication; emotional entanglement 中文释义 彼此缠绕、难以理清的关系或事情；常用于形容复杂的人际关系、情感关系或长期矛盾。 english meaning a complicated entanglement or involvement that is difficult to untangle, especially in relationships or emotional conflicts.">
+      <div class="word-main">
+        <span class="word-zh">纠葛</span>
+        <span class="word-pinyin">jiūgé</span>
+        <span class="word-en"><em>entanglement; complication; emotional entanglement</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>彼此缠绕、难以理清的关系或事情；常用于形容复杂的人际关系、情感关系或长期矛盾。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A complicated entanglement or involvement that is difficult to untangle, especially in relationships or emotional conflicts.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">纠</span> <span class="plus">+</span> <span class="char-break">葛</span> <span class="equals">=</span> <span class="result">纠葛</span><br/>纠 (jiū) = to entangle; to tangle  |  葛 (gé) = kudzu; vine-like plant<br/>→ <em>Vines tangled together — an entanglement.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们之间有一些说不清的<strong>情感纠葛</strong>。</span>
+        <span class="ex-en"><em>There is a complicated emotional entanglement between them.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="亲密 qīnmì intimate; close 中文释义 关系非常近，彼此信任、关心，感情深厚。 english meaning very close in relationship; mutually trusting, caring, and emotionally connected.">
+      <div class="word-main">
+        <span class="word-zh">亲密</span>
+        <span class="word-pinyin">qīnmì</span>
+        <span class="word-en"><em>intimate; close</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>关系非常近，彼此信任、关心，感情深厚。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Very close in relationship; mutually trusting, caring, and emotionally connected.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">亲</span> <span class="plus">+</span> <span class="char-break">密</span> <span class="equals">=</span> <span class="result">亲密</span><br/>亲 (qīn) = close; related; parent  |  密 (mì) = dense; secret; intimate<br/>→ <em>Close and intimate.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们是关系很<strong>亲密</strong>的朋友。</span>
+        <span class="ex-en"><em>They are very close friends.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="疏远 shūyuǎn distant; estranged 中文释义 关系不再亲密，变得冷淡或有距离感。 english meaning a relationship that is no longer close; becoming cold or distant.">
+      <div class="word-main">
+        <span class="word-zh">疏远</span>
+        <span class="word-pinyin">shūyuǎn</span>
+        <span class="word-en"><em>distant; estranged</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>关系不再亲密，变得冷淡或有距离感。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A relationship that is no longer close; becoming cold or distant.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">疏</span> <span class="plus">+</span> <span class="char-break">远</span> <span class="equals">=</span> <span class="result">疏远</span><br/>疏 (shū) = sparse; distant; to neglect  |  远 (yuǎn) = far; distant<br/>→ <em>Distant and far apart.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">毕业后，他们慢慢<strong>疏远</strong>了。</span>
+        <span class="ex-en"><em>After graduation, they gradually grew apart.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="融洽 róngqià harmonious; getting along well 中文释义 关系和谐、愉快，彼此没有冲突。 english meaning a harmonious and pleasant relationship; no conflicts.">
+      <div class="word-main">
+        <span class="word-zh">融洽</span>
+        <span class="word-pinyin">róngqià</span>
+        <span class="word-en"><em>harmonious; getting along well</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>关系和谐、愉快，彼此没有冲突。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A harmonious and pleasant relationship; no conflicts.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">融</span> <span class="plus">+</span> <span class="char-break">洽</span> <span class="equals">=</span> <span class="result">融洽</span><br/>融 (róng) = to melt; to blend; harmonious  |  洽 (qià) = to consult; to be in harmony<br/>→ <em>Blended in harmony.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们夫妻关系很<strong>融洽</strong>。</span>
+        <span class="ex-en"><em>The couple has a very harmonious relationship.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="紧张 jǐnzhāng tense; strained (of relationship) 中文释义 关系不和谐，充满压力或潜在冲突。 english meaning a relationship that is not harmonious, filled with pressure or latent conflict.">
+      <div class="word-main">
+        <span class="word-zh">紧张</span>
+        <span class="word-pinyin">jǐnzhāng</span>
+        <span class="word-en"><em>tense; strained (of relationship)</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>关系不和谐，充满压力或潜在冲突。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>A relationship that is not harmonious, filled with pressure or latent conflict.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">紧</span> <span class="plus">+</span> <span class="char-break">张</span> <span class="equals">=</span> <span class="result">紧张</span><br/>紧 (jǐn) = tight; tense  |  张 (zhāng) = to stretch; to spread<br/>→ <em>Tightly stretched — tense.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们之间的气氛很<strong>紧张</strong>。</span>
+        <span class="ex-en"><em>The atmosphere between them is very tense.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="信任 xìnrèn trust; to trust 中文释义 相信对方是诚实、可靠、不会伤害自己的。 english meaning to believe that the other person is honest, reliable, and will not harm you.">
+      <div class="word-main">
+        <span class="word-zh">信任</span>
+        <span class="word-pinyin">xìnrèn</span>
+        <span class="word-en"><em>trust; to trust</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>相信对方是诚实、可靠、不会伤害自己的。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>To believe that the other person is honest, reliable, and will not harm you.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">信</span> <span class="plus">+</span> <span class="char-break">任</span> <span class="equals">=</span> <span class="result">信任</span><br/>信 (xìn) = trust; faith; letter  |  任 (rèn) = to appoint; to allow; responsibility<br/>→ <em>Trust and reliance.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们之间建立了深厚的<strong>信任</strong>。</span>
+        <span class="ex-en"><em>They have built deep trust between them.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="依赖 yīlài dependent; to rely on 中文释义 需要对方的支持和照顾，离不开对方。 english meaning needing the other person's support and care; cannot do without them.">
+      <div class="word-main">
+        <span class="word-zh">依赖</span>
+        <span class="word-pinyin">yīlài</span>
+        <span class="word-en"><em>dependent; to rely on</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>需要对方的支持和照顾，离不开对方。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Needing the other person's support and care; cannot do without them.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">依</span> <span class="plus">+</span> <span class="char-break">赖</span> <span class="equals">=</span> <span class="result">依赖</span><br/>依 (yī) = to depend on; to follow  |  赖 (lài) = to rely on; to depend on<br/>→ <em>Depend on and rely upon.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">她对父母有很大的<strong>依赖</strong>。</span>
+        <span class="ex-en"><em>She is very dependent on her parents.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="冷淡 lěngdàn cold; indifferent; aloof 中文释义 对人不热情、不关心，态度冷漠。 english meaning not warm or caring toward others; cold in attitude.">
+      <div class="word-main">
+        <span class="word-zh">冷淡</span>
+        <span class="word-pinyin">lěngdàn</span>
+        <span class="word-en"><em>cold; indifferent; aloof</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>对人不热情、不关心，态度冷漠。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Not warm or caring toward others; cold in attitude.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">冷</span> <span class="plus">+</span> <span class="char-break">淡</span> <span class="equals">=</span> <span class="result">冷淡</span><br/>冷 (lěng) = cold  |  淡 (dàn) = weak; tasteless; indifferent<br/>→ <em>Cold and indifferent.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他对我的态度很<strong>冷淡</strong>。</span>
+        <span class="ex-en"><em>His attitude toward me is very cold.</em></span>
+      </div>
+    </div>
+    <div class="word-card" data-category="relationships" data-term="默契 mòqì tacit understanding; rapport 中文释义 双方不需要言语就能明白彼此的意思和想法。 english meaning both sides understand each other without words; a natural rapport.">
+      <div class="word-main">
+        <span class="word-zh">默契</span>
+        <span class="word-pinyin">mòqì</span>
+        <span class="word-en"><em>tacit understanding; rapport</em></span>
+        <span class="category-badge">人际与情感关系</span>
+      </div>
+      <div class="meanings">
+        <div class="meaning-zh"><span class="meaning-label">中文释义</span>双方不需要言语就能明白彼此的意思和想法。</div>
+        <div class="meaning-en"><span class="meaning-label">English Meaning</span>Both sides understand each other without words; a natural rapport.</div>
+      </div>
+      <div class="deconstruction">
+        <span class="decon-label">🔍 Word Deconstruction</span>
+        <span class="char-break">默</span> <span class="plus">+</span> <span class="char-break">契</span> <span class="equals">=</span> <span class="result">默契</span><br/>默 (mò) = silent; tacit  |  契 (qì) = agreement; to fit; to agree<br/>→ <em>Silent agreement — tacit understanding.</em>
+      </div>
+      <div class="example">
+        <span class="example-label">📝 Example</span>
+        <span class="ex-zh">他们之间很有<strong>默契</strong>。</span>
+        <span class="ex-en"><em>They have great rapport.</em></span>
+      </div>
+    </div>
+  </div></details>
+</div>
+
+<div class="no-results">没有找到匹配的词条。<br><em>No matching entries found.</em></div>
+</main>
+<footer class="footer">Psychology &amp; Emotion Vocabulary · 中英双语心理与情感词汇表</footer>
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  const input=document.getElementById('searchBox');
+  const clear=document.getElementById('clearBtn');
+  const cards=[...document.querySelectorAll('.word-card')];
+  const groups=[...document.querySelectorAll('.category-group')];
+  const count=document.getElementById('countText');
+  function filter(){
+    const q=input.value.trim().toLowerCase();
+    let visible=0;
+    cards.forEach(c=>{
+      const ok=!q || c.dataset.term.includes(q);
+      c.classList.toggle('hidden',!ok);
+      if(ok) visible++;
+    });
+    groups.forEach(g=>{
+      const any=[...g.querySelectorAll('.word-card')].some(c=>!c.classList.contains('hidden'));
+      g.style.display=any?'':'none';
+      if(q && any) g.open=true;
+    });
+    count.textContent=q ? `${visible} 个匹配词条 / ${cards.length} total` : `${cards.length} 个词条`;
+    document.querySelector('.no-results').style.display=visible?'none':'block';
+  }
+  input.addEventListener('input',filter);
+  clear.addEventListener('click',()=>{input.value='';input.focus();filter()});
+  window.addEventListener('scroll',()=>document.querySelector('.back-top').classList.toggle('show',scrollY>500));
+})();
+</script>
+
+</body>
+</html>
